@@ -20,7 +20,8 @@
     --bg-color-modal: #f7f7f7;
     --color-modal: #333;
     --thickness-custom-border: 15px;
-    --custom-border-gradient: linear-gradient(45deg, #4b81d8, #c2e9fb);
+    --custom-border-color-inside: #f7f7f7;
+    --custom-border-color-outside: #333;
   }
 
   .bored-modal-wrapper {
@@ -36,7 +37,7 @@
       padding: 25px 8px 10px;
       background-color: var(--bg-color-modal);
       color: var(--color-modal);
-      border-radius: 3px;
+      border: 1px solid var(--custom-border-color-outside);
 
       & h2 {
         margin-bottom: 10px;
@@ -55,7 +56,7 @@
           display: block;
           width: 25px;
           height: 2px;
-          background-color: #fff;
+          background-color: var(--bg-color-modal);
           transition: transform 0.3s ease;
 
           &.tick-one {
@@ -87,9 +88,9 @@
       transform: translate(-50%, -50%);
       width: calc(100% + var(--thickness-custom-border));
       height: calc(100% + var(--thickness-custom-border));
-      background-image: var(--custom-border-gradient);
-      border-radius: 4px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: var(--custom-border-color-inside);
+      border: 3px solid var(--custom-border-color-outside);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
   }
 </style>

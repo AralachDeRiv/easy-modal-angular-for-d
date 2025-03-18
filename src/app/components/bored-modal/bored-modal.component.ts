@@ -11,4 +11,5 @@ export class BoredModalComponent {
   onClose() {
     this.closeBoredModal.emit();
   }
+  width = 300;
 }
