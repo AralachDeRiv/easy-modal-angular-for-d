@@ -1,0 +1,20 @@
+<div class="easy-modal-wrapper" (click)="onClose()">
+  <!-- Pour éviter que l'event se propage lorsque tu cliques sur la modal -->
+  <div class="content-wrapper" (click)="$event.stopPropagation()">
+    <ng-content></ng-content>
+  </div>
+</div>
+
+<style>
+  .easy-modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(98, 87, 87, 0.27);
+  }
+</style>

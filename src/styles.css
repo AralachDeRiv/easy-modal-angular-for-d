@@ -68,3 +68,18 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+/*
+  10. Unset all default style for btn
+*/
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/* GLOBAL STYLES */
+
+body {
+  padding: 10%;
+}

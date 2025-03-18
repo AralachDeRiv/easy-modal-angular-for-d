@@ -8,7 +8,6 @@ import { Component, output } from '@angular/core';
 })
 export class ModalWrapperComponent {
   closeModal = output();
-
   onClose() {
     this.closeModal.emit();
   }

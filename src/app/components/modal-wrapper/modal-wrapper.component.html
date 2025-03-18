@@ -1,10 +1,19 @@
 <div class="modal-wrapper" (click)="onClose()">
-  <div (click)="$event.stopPropagation()">
+  <div class="content-wrapper" (click)="$event.stopPropagation()">
     <ng-content></ng-content>
   </div>
 </div>
 
 <style>
+  @keyframes reduceOpacity {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   .modal-wrapper {
     position: fixed;
     z-index: 999;
@@ -16,6 +25,6 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
+    animation: reduceOpacity 0.3s linear;
   }
 </style>

@@ -48,9 +48,8 @@
 </p>
 
 <!-- MODALS -->
-
 @if(openBoredModal){
-<app-modal-wrapper (closeModal)="closeBoredModal()">
-  <app-bored-modal />
-</app-modal-wrapper>
+<app-easy-modal-wrapper (closeModal)="closeBoredModal()">
+  <app-bored-modal (closeBoredModal)="closeBoredModal()" />
+</app-easy-modal-wrapper>
 }

@@ -1,18 +1,95 @@
-<div class="bored-modal">
-  <h2>Title</h2>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, nihil nobis
-    possimus maxime voluptas accusantium. Quam odit non magnam voluptates. A
-    repellendus ducimus optio vel animi consequuntur, nemo quaerat ipsam!
-  </p>
+<div class="bored-modal-wrapper">
+  <div class="custom-border"></div>
+  <div class="bored-modal">
+    <button (click)="onClose()">
+      <span class="tick-one"></span>
+      <span class="tick-two"></span>
+    </button>
+    <h2>Boring modal</h2>
+    <p>
+      You can click the button or outside the modal to close it. Nothing
+      special...
+    </p>
+  </div>
 </div>
 
 <style>
-  .bored-modal {
-    width: 300px;
-    height: 250px;
-    border: 1px solid red;
-    padding: 5px;
-    background-color: green;
+  :host {
+    --width-modal: 300px;
+    --heigth-modal: 250px;
+    --bg-color-modal: #f7f7f7;
+    --color-modal: #333;
+    --thickness-custom-border: 15px;
+    --custom-border-gradient: linear-gradient(45deg, #4b81d8, #c2e9fb);
+  }
+
+  .bored-modal-wrapper {
+    position: relative;
+    width: var(--width-modal);
+    height: var(--heigth-modal);
+
+    & .bored-modal {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: 25px 8px 10px;
+      background-color: var(--bg-color-modal);
+      color: var(--color-modal);
+      border-radius: 3px;
+
+      & h2 {
+        margin-bottom: 10px;
+      }
+
+      & button {
+        position: absolute;
+        background-color: #d32f2f;
+        top: 0;
+        right: 0;
+        height: 25px;
+        width: 25px;
+        padding: 5px;
+
+        & span {
+          display: block;
+          width: 25px;
+          height: 2px;
+          background-color: #fff;
+          transition: transform 0.3s ease;
+
+          &.tick-one {
+            position: absolute;
+            transform: rotate(45deg);
+
+            .bored-modal button:hover & {
+              transform: rotate(calc(180deg + 45deg));
+            }
+          }
+
+          &.tick-two {
+            position: absolute;
+            transform: rotate(-45deg);
+
+            .bored-modal button:hover & {
+              transform: rotate(calc(360deg + -45deg));
+            }
+          }
+        }
+      }
+    }
+
+    & .custom-border {
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% + var(--thickness-custom-border));
+      height: calc(100% + var(--thickness-custom-border));
+      background-image: var(--custom-border-gradient);
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
   }
 </style>
