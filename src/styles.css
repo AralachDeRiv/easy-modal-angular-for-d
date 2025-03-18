@@ -81,5 +81,13 @@ button {
 /* GLOBAL STYLES */
 
 body {
-  padding: 10%;
+  --bg-color-body: #fff;
+  --color-body: #333;
+
+  background-color: var(--bg-color-body);
+  color: var(--color-body);
+  font-family: "Arial", sans-serif;
+  padding: 50px 15px 50px;
+  display: flex;
+  justify-content: center;
 }

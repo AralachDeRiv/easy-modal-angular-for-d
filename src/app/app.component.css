@@ -1,0 +1,75 @@
+main {
+  max-width: 1000px;
+
+  & h1,
+  p:has(+ h2) {
+    margin-bottom: 1.5625rem;
+  }
+
+  & h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  & p {
+    margin-bottom: 0.9375rem;
+  }
+
+  /* SHAPES */
+  --border-color: rgb(111, 42, 42);
+  --border-thickness: 7px;
+  --square: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  --octagon: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
+  --circle: circle();
+
+  [class$="shape"] {
+    position: relative;
+    width: 275px;
+    height: 275px;
+    background: var(--border-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    shape-margin: 20px;
+
+    &::before {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      width: calc(100% - var(--border-thickness));
+      height: calc(100% - var(--border-thickness));
+      background-color: var(--bg-color-body);
+    }
+
+    &[class^="square"] {
+      --shape-polygon: var(--square);
+      --float-position: left;
+    }
+    &[class^="circle"] {
+      --shape-polygon: var(--circle);
+      --float-position: right;
+    }
+    &[class^="octagon"] {
+      --shape-polygon: var(--octagon);
+      --float-position: left;
+    }
+
+    &,
+    &::before {
+      clip-path: var(--shape-polygon);
+      shape-outside: var(--shape-polygon);
+      float: var(--float-position);
+      shape-margin: 15px;
+      margin: 10px;
+    }
+  }
+}
