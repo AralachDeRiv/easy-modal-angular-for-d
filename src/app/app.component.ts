@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { BoredModalTowComponent } from './components/bored-modal-tow/bored-modal-tow.component';
 import { BoredModalComponent } from './components/bored-modal/bored-modal.component';
 import { EasyModalWrapperComponent } from './components/easy-modal-wrapper/easy-modal-wrapper.component';
+import { ModalMoonComponent } from './components/modal-moon/modal-moon.component';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { EasyModalWrapperComponent } from './components/easy-modal-wrapper/easy-
     BoredModalComponent,
     EasyModalWrapperComponent,
     BoredModalTowComponent,
+    ModalMoonComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -41,4 +43,8 @@ export class AppComponent {
   }
 
   // EXPERIMENTALES
+  @ViewChild(ModalMoonComponent) modalMoonComponent!: ModalMoonComponent;
+  displayModalMoon() {
+    this.modalMoonComponent.displayModal();
+  }
 }
