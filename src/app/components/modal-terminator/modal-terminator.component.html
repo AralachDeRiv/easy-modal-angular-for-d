@@ -2,6 +2,10 @@
   <div class="right-block"></div>
   <div class="left-block"></div>
 
+  <div class="title-container">
+    <h2>TERMINATOR</h2>
+  </div>
+
   <div class="emoji-container">
     <img src="images/scared-emoji.png" />
   </div>
@@ -29,18 +33,34 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
+    /* CRASHING BLOCK */
     [class$="block"] {
       z-index: 1;
       position: absolute;
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
       top: 50%;
       left: 50%;
-      /* transform: translate(-50%, -50%); */
-      background-color: black;
+      background-color: rgb(46, 38, 5);
+      transition: transform 0.4s 1.5s
+        linear(
+          0,
+          0.052 1.7%,
+          0.445 7.8%,
+          0.655 12.3%,
+          0.739 14.9%,
+          0.809 17.8%,
+          0.865 21%,
+          0.908 24.5%,
+          0.939 28.3%,
+          0.962 32.6%,
+          0.989 43.9%,
+          0.998 60.6%,
+          1
+        );
 
       &[class^="left"] {
-        transform: translate(-60%, -50%);
+        transform: translate(-50%, -50%);
         clip-path: polygon(
           0% 0%,
           60% 0%,
@@ -59,7 +79,7 @@
       }
 
       &[class^="right"] {
-        transform: translate(-40%, -50%);
+        transform: translate(-50%, -50%);
         clip-path: polygon(
           100% 0%,
           45% 0%,
@@ -78,6 +98,25 @@
       }
     }
 
+    /* TITLE */
+    & .title-container {
+      position: absolute;
+      z-index: 5;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      background-image: radial-gradient(circle, red 1px, blue);
+      background-clip: text;
+      color: transparent;
+      font-size: 30px;
+      font-weight: 800;
+      clip-path: inset(100% 0 0 0);
+
+      transition: clip-path 0.4s ease-in-out 3s;
+    }
+
+    /* EMOJI */
     & .emoji-container {
       width: 200px;
       height: 200px;
@@ -89,9 +128,52 @@
       }
     }
 
+    /* BACKDROP */
     &::backdrop {
       background-image: radial-gradient(circle, red 1px, blue);
       background-size: 20px 10px;
+    }
+
+    /* TRANSITIONS */
+    &,
+    &::backdrop {
+      transition: display 1s allow-discrete, overlay 1s allow-discrete,
+        opacity 1s;
+      opacity: 0;
+    }
+
+    /* FINAL STATE */
+    &[open],
+    &[open]::backdrop {
+      opacity: 1;
+    }
+
+    &[open] {
+      & .title-container {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    /* STARTING STATE*/
+    @starting-style {
+      &[open],
+      &[open]::backdrop {
+        opacity: 0;
+      }
+
+      &[open] {
+        & [class^="left"] {
+          transform: translate(-1000px, -50%);
+        }
+
+        & [class^="right"] {
+          transform: translate(1000px, -50%);
+        }
+
+        & .title-container {
+          clip-path: inset(0 100% 0 100%);
+        }
+      }
     }
   }
 </style>
