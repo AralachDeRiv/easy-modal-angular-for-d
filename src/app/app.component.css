@@ -17,9 +17,6 @@ main {
 
   /* BUTTON */
 
-  /* Default gradient */
-  --btn-gradient: linear-gradient(45deg, #ff6a00, #ee0979);
-
   .modal-btn {
     &.btn-bored-1 {
       --btn-gradient: linear-gradient(45deg, #ff6a00, #ee0979);
@@ -31,6 +28,16 @@ main {
 
     &.btn-moon {
       --btn-gradient: linear-gradient(45deg, #56799c, #4ca1af);
+    }
+
+    &.btn-terminator {
+      --btn-gradient: linear-gradient(
+        45deg,
+        #ff4500,
+        #ff6347,
+        #ff8c00,
+        #ffd700
+      );
     }
 
     position: relative;
