@@ -3,6 +3,7 @@ import { BoredModalTowComponent } from './components/bored-modal-tow/bored-modal
 import { BoredModalComponent } from './components/bored-modal/bored-modal.component';
 import { EasyModalWrapperComponent } from './components/easy-modal-wrapper/easy-modal-wrapper.component';
 import { ModalMoonComponent } from './components/modal-moon/modal-moon.component';
+import { ModalTerminatorComponent } from './components/modal-terminator/modal-terminator.component';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { ModalMoonComponent } from './components/modal-moon/modal-moon.component
     EasyModalWrapperComponent,
     BoredModalTowComponent,
     ModalMoonComponent,
+    ModalTerminatorComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -46,5 +48,11 @@ export class AppComponent {
   @ViewChild(ModalMoonComponent) modalMoonComponent!: ModalMoonComponent;
   displayModalMoon() {
     this.modalMoonComponent.displayModal();
+  }
+
+  @ViewChild(ModalTerminatorComponent)
+  modalTerminatorComponent!: ModalTerminatorComponent;
+  displayModalTerminator() {
+    this.modalTerminatorComponent.displayModal();
   }
 }
