@@ -16,13 +16,23 @@ main {
   }
 
   /* BUTTON */
+
+  /* Default gradient */
   --btn-gradient: linear-gradient(45deg, #ff6a00, #ee0979);
 
   .modal-btn {
+    &.btn-bored-1 {
+      --btn-gradient: linear-gradient(45deg, #ff6a00, #ee0979);
+    }
+
+    &.btn-bored-2 {
+      --btn-gradient: linear-gradient(45deg, #56799c, #4ca1af);
+    }
+
     position: relative;
     overflow: hidden;
     background-color: black;
-    padding: 4px 6px;
+    padding: 3px 5px;
     border: 3px solid transparent;
     border-image-source: var(--btn-gradient);
     border-image-slice: 1;
@@ -51,13 +61,15 @@ main {
     &:hover::before {
       left: 100%;
     }
+
     &:not(:hover)::before {
       opacity: 0;
     }
   }
 
   /* SHAPES */
-  --border-color: rgb(7, 73, 88);
+  --shape-dimension: 275px;
+  --border-color: rgba(55, 73, 10, 0.35);
   --border-thickness: 10px;
   --square: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   --octagon: polygon(
@@ -85,14 +97,32 @@ main {
 
   [class$="shape"] {
     position: relative;
-    width: 275px;
-    height: 275px;
+    width: var(--shape-dimension);
+    height: var(--shape-dimension);
     background: var(--border-color);
 
     display: flex;
     justify-content: center;
     align-items: center;
     shape-margin: 20px;
+    margin: 10px;
+
+    &[class^="square"] {
+      --shape-polygon: var(--square);
+      --float-position: left;
+    }
+
+    &[class^="star"] {
+      --shape-polygon: var(--star);
+      --float-position: right;
+      width: calc(var(--shape-dimension) + 100px);
+      height: calc(var(--shape-dimension) + 100px);
+    }
+
+    &[class^="octagon"] {
+      --shape-polygon: var(--octagon);
+      --float-position: left;
+    }
 
     &::before {
       position: absolute;
@@ -103,28 +133,28 @@ main {
       background-color: var(--bg-color-body);
     }
 
-    &[class^="square"] {
-      --shape-polygon: var(--square);
-      --float-position: left;
-    }
-    &[class^="star"] {
-      --shape-polygon: var(--star);
-      --float-position: right;
-    }
-
-    &[class^="octagon"] {
-      --shape-polygon: var(--octagon);
-      --float-position: left;
-    }
-
     &,
     &::before {
       clip-path: var(--shape-polygon);
       shape-outside: var(--shape-polygon);
       float: var(--float-position);
     }
+  }
 
-    shape-margin: 15px;
-    margin: 10px;
+  /* POSITIONNING BTN FOR SQUARE SHAPE */
+  .square-shape {
+    position: relative;
+
+    & .btn-bored-1 {
+      position: absolute;
+      top: var(--border-thickness);
+      left: var(--border-thickness);
+    }
+
+    & .btn-bored-2 {
+      position: absolute;
+      bottom: var(--border-thickness);
+      right: var(--border-thickness);
+    }
   }
 }
