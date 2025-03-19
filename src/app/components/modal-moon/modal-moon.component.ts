@@ -10,6 +10,7 @@ export class ModalMoonComponent {
 
   displayModal() {
     this.modalMoon.nativeElement.showModal();
+    document.body.style.overflow = 'hidden';
   }
 
   closeOnTheBackdrop(event: MouseEvent) {
@@ -28,5 +29,6 @@ export class ModalMoonComponent {
 
   closeModale() {
     this.modalMoon.nativeElement.close();
+    document.body.style.overflow = '';
   }
 }
