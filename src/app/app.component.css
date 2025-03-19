@@ -26,6 +26,10 @@ main {
     }
 
     &.btn-bored-2 {
+      --btn-gradient: linear-gradient(135deg, #00b894, #6ab04c, #2d6a4f);
+    }
+
+    &.btn-moon {
       --btn-gradient: linear-gradient(45deg, #56799c, #4ca1af);
     }
 
@@ -155,6 +159,12 @@ main {
       position: absolute;
       bottom: var(--border-thickness);
       right: var(--border-thickness);
+    }
+  }
+
+  .star-shape {
+    & .btn-moon {
+      transform: translateY(7px);
     }
   }
 }

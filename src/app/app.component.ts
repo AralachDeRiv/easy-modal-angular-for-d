@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { ModalWrapperComponent } from './components/modal-wrapper/modal-wrapper.component';
+import { BoredModalTowComponent } from './components/bored-modal-tow/bored-modal-tow.component';
 import { BoredModalComponent } from './components/bored-modal/bored-modal.component';
 import { EasyModalWrapperComponent } from './components/easy-modal-wrapper/easy-modal-wrapper.component';
-import { BoredModalTowComponent } from './components/bored-modal-tow/bored-modal-tow.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    ModalWrapperComponent,
     BoredModalComponent,
     EasyModalWrapperComponent,
     BoredModalTowComponent,
@@ -19,9 +17,12 @@ export class AppComponent {
   title = 'easy-modal-angular-for-d';
 
   // MODALS
+
+  // EASY MODALS
   openBoredModal = false;
   displayBoredModal() {
     this.openBoredModal = true;
+    // Pour retirer le scroll
     document.body.style.overflow = 'hidden';
   }
   closeBoredModal() {
@@ -38,4 +39,6 @@ export class AppComponent {
     this.openBoredModalTwo = false;
     document.body.style.overflow = '';
   }
+
+  // EXPERIMENTALES
 }
