@@ -78,14 +78,6 @@ button {
   cursor: pointer;
 }
 
-/*
-  11. Remove scrollbar
-*/
-
-* {
-  scrollbar-width: none;
-}
-
 /* GLOBAL STYLES */
 body {
   --bg-color-body: #fff;

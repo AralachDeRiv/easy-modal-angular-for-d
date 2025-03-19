@@ -21,7 +21,7 @@
       <span>BORED MODAL</span>
     </button>
 
-    <button class="modal-btn btn-bored-2" (click)="displayBoredModal()">
+    <button class="modal-btn btn-bored-2" (click)="displayBoredModalTwo()">
       <span>BORED MODAL</span>
     </button>
   </div>
@@ -75,7 +75,7 @@
   </p>
 
   <div class="star-shape">
-    <button class="modal-btn btn-bored-2" (click)="displayBoredModal()">
+    <button class="modal-btn btn-bored-2" (click)="displayBoredModalTwo()">
       <span>BORED MODAL</span>
     </button>
   </div>
@@ -175,8 +175,14 @@
 </main>
 
 <!-- MODALS -->
+
+<!-- EASY MODALS -->
 @if(openBoredModal){
 <app-easy-modal-wrapper (closeModal)="closeBoredModal()">
   <app-bored-modal (closeBoredModal)="closeBoredModal()" />
+</app-easy-modal-wrapper>
+} @if (openBoredModalTwo) {
+<app-easy-modal-wrapper (closeModal)="closeBoredModalTwo()">
+  <app-bored-modal-tow (closeModal)="closeBoredModalTwo()" />
 </app-easy-modal-wrapper>
 }
