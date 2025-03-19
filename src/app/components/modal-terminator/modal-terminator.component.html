@@ -1,5 +1,97 @@
 <dialog #modalTerminator (click)="closeOnTheBackdrop($event)">
-  <img src="images/scared-emoji.png" />
+  <div class="right-block"></div>
+  <div class="left-block"></div>
+
+  <div class="emoji-container">
+    <img src="images/scared-emoji.png" />
+  </div>
 </dialog>
 
-<style></style>
+<style>
+  @keyframes pulseSize {
+    0% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  dialog {
+    /* RESET */
+    background-color: transparent;
+    overflow: visible;
+    border: none;
+
+    /* POSITION + STYLING */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    [class$="block"] {
+      z-index: 1;
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      /* transform: translate(-50%, -50%); */
+      background-color: black;
+
+      &[class^="left"] {
+        transform: translate(-60%, -50%);
+        clip-path: polygon(
+          0% 0%,
+          60% 0%,
+          55% 10%,
+          60% 20%,
+          55% 30%,
+          60% 40%,
+          55% 50%,
+          60% 60%,
+          55% 70%,
+          60% 80%,
+          55% 90%,
+          60% 100%,
+          0% 100%
+        );
+      }
+
+      &[class^="right"] {
+        transform: translate(-40%, -50%);
+        clip-path: polygon(
+          100% 0%,
+          45% 0%,
+          40% 10%,
+          45% 20%,
+          40% 30%,
+          45% 40%,
+          40% 50%,
+          45% 60%,
+          40% 70%,
+          45% 80%,
+          40% 90%,
+          45% 100%,
+          100% 100%
+        );
+      }
+    }
+
+    & .emoji-container {
+      width: 200px;
+      height: 200px;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        animation: pulseSize 1s infinite linear alternate;
+      }
+    }
+
+    &::backdrop {
+      background-image: radial-gradient(circle, red 1px, blue);
+      background-size: 20px 10px;
+    }
+  }
+</style>
