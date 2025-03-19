@@ -5,16 +5,16 @@
 
 <style>
   dialog {
-    /* CENTER */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
     /* RESET */
     background-color: transparent;
     overflow: hidden;
     border: none;
+
+    /* POSITION + STYLING */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     width: 400px;
     height: 400px;
@@ -40,24 +40,27 @@
     }
 
     /* ANIMATIONS */
-    /* Some features here are only available on chrome */
+    /* Some features here are only available on Chrome */
 
+    /* The text */
     & h2 {
       transition: transform 0.5s 3.5s, opacity 0.5s 3.5s;
     }
 
+    /* The moon */
     & {
       transition: display 1s allow-discrete, overlay 1s allow-discrete,
         opacity 1s, transform 3s 0.5s ease;
       opacity: 0;
     }
-
+    /* The sky */
     &::backdrop {
       transition: display 1s allow-discrete, overlay 1s allow-discrete,
         opacity 1s, transform 1s;
       opacity: 0;
     }
 
+    /* The final state */
     &[open] {
       opacity: 1;
       transform: translate(-50%, -50%);
@@ -72,6 +75,7 @@
       }
     }
 
+    /* Style applying when the dialog open */
     @starting-style {
       &[open],
       &[open]::backdrop {
@@ -90,9 +94,10 @@
   }
 
   ::backdrop {
+    /* Sky */
     background-color: black;
 
-    /*  */
+    /* Stars lightning */
     background-image: radial-gradient(white 1px, transparent 2px),
       radial-gradient(white 1.5px, transparent 2.5px),
       radial-gradient(white 1px, transparent 3px),
@@ -100,9 +105,11 @@
       radial-gradient(white 2px, transparent 3px),
       radial-gradient(white 3px, transparent 5px);
 
+    /* Stars size */
     background-size: 200px 200px, 300px 300px, 400px 400px, 500px 500px,
       600px 600px, 700px 700px;
 
+    /* "Random" position */
     background-position: 20px 30px, 100px 200px, 300px 100px, 50px 400px,
       250px 500px, 120px 600px, 400px 700px, 600px 800px, 100px 900px,
       200px 1200px, 500px 1500px, 700px 1700px, 800px 100px, 300px 150px;
